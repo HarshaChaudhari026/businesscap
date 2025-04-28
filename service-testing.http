@@ -1,0 +1,8 @@
+POST http://localhost:4004/odata/v4/mini-mart/PLANT_INFO 
+Content-Type: application/json
+
+{
+    
+      "PLANT_ID": "720",
+      "PLANT_NAME": ""
+}
