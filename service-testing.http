@@ -1,8 +1,72 @@
-POST http://localhost:4004/odata/v4/mini-mart/PLANT_INFO 
+# POST http://localhost:4004/odata/v4/mini-mart/PLANT_INFO 
+# Content-Type: application/json
+
+# {
+#       "PLANT_ID": "720",
+#       "PLANT_NAME": ""
+# }
+
+# GET http://localhost:4004/odata/v4/mini-mart/CUSTOMERS_INFO
+
+# POST http://localhost:4004/odata/v4/mini-mart/CUSTOMERS_INFO
+# Content-Type: application/json
+
+# {
+#       "CUSTOMER_ID": "1",
+#       "CUSTOMER_NAME": "John",
+#       "CUSTOMER_EMAILID": "John@gmail.com",
+#       "CUSTOMER_CONTACTNO": "123456789",
+#       "CUSTOMER_lOCATION": "Pune"
+# }
+
+# POST http://localhost:4004/odata/v4/mini-mart/CUSTOMERS_INFO
+# Content-Type: application/json
+
+# {
+#       "CUSTOMER_ID": "2",
+#       "CUSTOMER_NAME": "Harry",
+#       "CUSTOMER_EMAILID": "Harry@gmail.com",
+#       "CUSTOMER_CONTACTNO": "8736468389",
+#       "CUSTOMER_lOCATION": "Hyderabad"
+# }
+
+
+# POST http://localhost:4004/odata/v4/mini-mart/EMPLOYEES_INFO
+# Content-Type: application/json
+
+# {
+    
+#       "EMPLOYEE_ID": "720",
+#       "EMPLOYEE_NAME": "",
+#       "EMPLOYEE_EMAILID": "John@gmail.com",
+#       "EMPLOYEE_CONTACTNO": "123456789",
+#       "EMPLOYEE_lOCATION": "Pune",
+#       "EMPLOYEE_DESIGNATION": "Software Developer",
+#       "EMPLOYEE_PLANT_LOCATION": "Pune"
+# }
+
+# PUT http://localhost:4004/odata/v4/mini-mart/CUSTOMERS_INFO
+# Content-Type: application/json
+
+# {
+#       "CUSTOMER_ID": "1",
+#       "CUSTOMER_CONTACTNO": "423466789",
+#       "CUSTOMER_lOCATION": "Mumbai"
+# }
+
+PUT http://localhost:4004/odata/v4/mini-mart/EMPLOYEES_INFO/720
 Content-Type: application/json
 
 {
     
-      "PLANT_ID": "720",
-      "PLANT_NAME": ""
+     
+      "EMPLOYEE_NAME": "Joy",
+      "EMPLOYEE_EMAILID": "Joy@gmail.com",
+      "EMPLOYEE_CONTACTNO": "127856789",
+      "EMPLOYEE_lOCATION": "Mumbai",
+      "EMPLOYEE_DESIGNATION": "Software Developer",
+      "EMPLOYEE_PLANT_LOCATION": "Pune"
 }
+
+# DELETE  http://localhost:4004/odata/v4/mini-mart/CUSTOMERS_INFO/1
+# Content-Type: application/json
