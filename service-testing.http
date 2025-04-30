@@ -1,9 +1,10 @@
-# POST http://localhost:4004/odata/v4/mini-mart/PLANT_INFO 
+
+# PUT http://localhost:4004/odata/v4/mini-mart/PLANT_INFO/1
 # Content-Type: application/json
 
 # {
-#       "PLANT_ID": "720",
-#       "PLANT_NAME": ""
+#       "PLANT_ID": "1",
+#       "PLANT_NAME": "Pune"
 # }
 
 # GET http://localhost:4004/odata/v4/mini-mart/CUSTOMERS_INFO
@@ -45,28 +46,36 @@
 #       "EMPLOYEE_PLANT_LOCATION": "Pune"
 # }
 
-# PUT http://localhost:4004/odata/v4/mini-mart/CUSTOMERS_INFO
+# PUT http://localhost:4004/odata/v4/mini-mart/CUSTOMERS_INFO/1
 # Content-Type: application/json
 
 # {
 #       "CUSTOMER_ID": "1",
 #       "CUSTOMER_CONTACTNO": "423466789",
-#       "CUSTOMER_lOCATION": "Mumbai"
+#       "CUSTOMER_lOCATION": "Mumbai",
+#       "CUSTOMER_NAME": "John",
+#       "CUSTOMER_EMAILID": "John@gmail.com",
+#       "CUSTOMER_PLANT_LOCATION" : "Pune"
+     
 # }
 
-PUT http://localhost:4004/odata/v4/mini-mart/EMPLOYEES_INFO/720
+GET http://localhost:4004/odata/v4/mini-mart/PostVaildationArrays
 Content-Type: application/json
 
-{
+
+# GET http://localhost:4004/odata/v4/mini-mart/PostVaildation?FLAG=ALL
+# Content-Type: application/json
+
+# {
     
      
-      "EMPLOYEE_NAME": "Joy",
-      "EMPLOYEE_EMAILID": "Joy@gmail.com",
-      "EMPLOYEE_CONTACTNO": "127856789",
-      "EMPLOYEE_lOCATION": "Mumbai",
-      "EMPLOYEE_DESIGNATION": "Software Developer",
-      "EMPLOYEE_PLANT_LOCATION": "Pune"
-}
+#       "EMPLOYEE_NAME": "Joy",
+#       "EMPLOYEE_EMAILID": "Joy@gmail.com",
+#       "EMPLOYEE_CONTACTNO": "127856789",
+#       "EMPLOYEE_lOCATION": "Mumbai",
+#       "EMPLOYEE_DESIGNATION": "Software Developer",
+#       "EMPLOYEE_PLANT_LOCATION": "Pune"
+# }
 
 # DELETE  http://localhost:4004/odata/v4/mini-mart/CUSTOMERS_INFO/1
 # Content-Type: application/json

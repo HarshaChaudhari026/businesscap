@@ -9,6 +9,7 @@ context catalogmini {
             CUSTOMER_EMAILID : String(100);
             CUSTOMER_CONTACTNO : String(10);
             CUSTOMER_lOCATION : String(200);
+            CUSTOMER_PLANT_LOCATION : String(200);
     }
 
 
