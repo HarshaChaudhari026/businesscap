@@ -1,9 +1,9 @@
 
-# PUT http://localhost:4004/odata/v4/mini-mart/PLANT_INFO/1
+# POST http://localhost:4004/odata/v4/mini-mart/PLANT_INFO
 # Content-Type: application/json
 
 # {
-#       "PLANT_ID": "1",
+#       "PLANT_ID": "t1",
 #       "PLANT_NAME": "Pune"
 # }
 
@@ -59,8 +59,8 @@
      
 # }
 
-GET http://localhost:4004/odata/v4/mini-mart/PostVaildationArrays
-Content-Type: application/json
+# GET http://localhost:4004/odata/v4/mini-mart/PostVaildationArrays
+# Content-Type: application/json
 
 
 # GET http://localhost:4004/odata/v4/mini-mart/PostVaildation?FLAG=ALL
@@ -77,5 +77,110 @@ Content-Type: application/json
 #       "EMPLOYEE_PLANT_LOCATION": "Pune"
 # }
 
-# DELETE  http://localhost:4004/odata/v4/mini-mart/CUSTOMERS_INFO/1
+POST   http://localhost:4004/odata/v4/mini-mart/RunJob
+Content-Type: application/json
+
+{
+  "Customers":[
+{
+      "CUSTOMER_ID": "A21",
+      "CUSTOMER_CONTACTNO": "423466789",
+      "CUSTOMER_lOCATION": "Mumbai",
+      "CUSTOMER_NAME": "John",
+      "CUSTOMER_EMAILID": "John@gmail.com",
+      "CUSTOMER_PLANT_LOCATION" : "Pune"
+     
+},
+{
+      "CUSTOMER_ID": "A89",
+      "CUSTOMER_CONTACTNO": "423466789",
+      "CUSTOMER_lOCATION": "Mumbai",
+      "CUSTOMER_NAME": "John",
+      "CUSTOMER_EMAILID": "John@gmail.com",
+      "CUSTOMER_PLANT_LOCATION" : "Pune"
+     
+},
+{
+      "CUSTOMER_ID": "A151",
+      "CUSTOMER_CONTACTNO": "423466789",
+      "CUSTOMER_lOCATION": "Mumbai",
+      "CUSTOMER_NAME": "John",
+      "CUSTOMER_EMAILID": "John@gmail.com",
+      "CUSTOMER_PLANT_LOCATION" : "Pune"
+     
+},
+{
+      "CUSTOMER_ID": "A229",
+      "CUSTOMER_CONTACTNO": "423466789",
+      "CUSTOMER_lOCATION": "Mumbai",
+      "CUSTOMER_NAME": "John",
+      "CUSTOMER_EMAILID": "John@gmail.com",
+      "CUSTOMER_PLANT_LOCATION" : "Pune"
+     
+}
+  ]
+}
+
+
+# POST   http://localhost:4004/odata/v4/mini-mart/RunJobEmployee
 # Content-Type: application/json
+
+# {
+#     "Employees": [
+#         {
+#         "EMPLOYEE_ID" : "6",
+#         "EMPLOYEE_NAME": "hem",
+#         "EMPLOYEE_EMAILID": "hem@gmail.com",
+#         "EMPLOYEE_CONTACTNO": "127856789",
+#         "EMPLOYEE_lOCATION": "Mumbai",
+#         "EMPLOYEE_DESIGNATION": "Software Developer",
+#         "EMPLOYEE_PLANT_LOCATION": "Pune",
+#         "EMPLOYEE_LIMIT": "40"
+#         },
+#           {
+#         "EMPLOYEE_ID" : "2",
+#         "EMPLOYEE_NAME": "hesm",
+#         "EMPLOYEE_EMAILID": "hsem@gmail.com",
+#         "EMPLOYEE_CONTACTNO": "127856789",
+#         "EMPLOYEE_lOCATION": "Mumbai",
+#         "EMPLOYEE_DESIGNATION": "Software Developer",
+#         "EMPLOYEE_PLANT_LOCATION": "Pune",
+#         "EMPLOYEE_LIMIT": "50"
+#         },
+#           {
+#         "EMPLOYEE_ID" : "3",
+#         "EMPLOYEE_NAME": "hesdm",
+#         "EMPLOYEE_EMAILID": "hesdm@gmail.com",
+#         "EMPLOYEE_CONTACTNO": "127856789",
+#         "EMPLOYEE_lOCATION": "Mumbai",
+#         "EMPLOYEE_DESIGNATION": "Software Developer",
+#         "EMPLOYEE_PLANT_LOCATION": "Pune",
+#         "EMPLOYEE_LIMIT": "60"
+#         },
+#         {
+#         "EMPLOYEE_ID" : "4",
+#         "EMPLOYEE_NAME": "hfem",
+#         "EMPLOYEE_EMAILID": "hesm@gmail.com",
+#         "EMPLOYEE_CONTACTNO": "127856789",
+#         "EMPLOYEE_lOCATION": "Mumbai",
+#         "EMPLOYEE_DESIGNATION": "Software Developer",
+#         "EMPLOYEE_PLANT_LOCATION": "Pune",
+#         "EMPLOYEE_LIMIT": "80"
+#         }
+#     ]
+# }
+
+
+
+# POST   http://localhost:4004/odata/v4/mini-mart/RunJobPlant
+# Content-Type: application/json
+
+# {
+#     "Plants": [
+#         {
+#         "PLANT_ID": "2",
+# #       "PLANT_NAME": "Pune",
+#         "PLANT_LIMIT":"90"
+#         }
+#     ]
+# }
