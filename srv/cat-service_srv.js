@@ -194,5 +194,32 @@ module.exports = async srv =>{
         }
       });
       
-      
+      srv.on('CallViews',async(req,res)=>{
+        try {
+          if (req.data.Flag == 'P') {
+            let pls = await cds.run("select PLANT_ID,PLANT_NAME from CATALOGMINI_PLANTS;")
+
+            console.log(pls)
+          }
+        } catch (error) {
+          console.log(error)
+        }
+      })
+
+
+      srv.on('CallViewsForPlants',async(req,res)=>{
+        try {
+          if (req.data.Flag == 'P') {
+            let pls = await cds.run(
+              `SELECT cp.PLANT_ID,cp.PLANT_NAME, cp.BRANCH ,cs.SUB_BRANCH_NAME
+              FROM CATALOGMINI_PLANTS as cp
+              INNER JOIN CATALOGMINI_PLANT_SECTOR as cs ON cp.PLANT_ID = cs.PLANT_ID;`
+              )
+
+            console.log(pls)
+          }
+        } catch (error) {
+          console.log(error)
+        }
+      })
 }
