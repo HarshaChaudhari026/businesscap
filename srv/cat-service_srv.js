@@ -222,4 +222,19 @@ module.exports = async srv =>{
           console.log(error)
         }
       })
+
+
+      srv.on('CallViewsForCustomer',async(req,res)=>{
+        try {
+          if (req.data.Flag == 'C') {
+            let pls = await cds.run(
+              `select CUSTOMER_ID ,CUSTOMER_NAME, CUSTOMER_PLANT_LOCATION from CATALOGMINI_CUSTOMERS;`
+              )
+
+            console.log(pls)
+          }
+        } catch (error) {
+          console.log(error)
+        }
+      })
 }

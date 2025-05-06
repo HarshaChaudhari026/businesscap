@@ -85,3 +85,22 @@ entity PSE {
         BRANCH :String(100);
         SUB_BRANCH_NAME : String(100);
 }
+
+
+@cds.persistence.exists
+@cds.persistence.table
+entity CUS {
+    key  CUSTOMER_ID             : String(25);
+        CUSTOMER_NAME           : String(100);
+        CUSTOMER_PLANT_LOCATION : String(200);
+}
+
+@cds.persistence.exists
+@cds.persistence.table
+entity CUSV {
+    key CUSTOMER_ID             : String(25);
+        CUSTOMER_NAME           : String(100);
+        CUSTOMER_lOCATION       : String(200);
+        CUSTOMER_PLANT_LOCATION : String(200);
+        EMPLOYEE_PLANT_LOCATION : String(200);
+}

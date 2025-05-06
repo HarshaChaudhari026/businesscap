@@ -66,7 +66,11 @@
 # GET http://localhost:4004/odata/v4/mini-mart/CallViews?Flag=P
 # Content-Type: application/json
 
-GET http://localhost:4004/odata/v4/mini-mart/CallViewsForPlants?Flag=P
+# GET http://localhost:4004/odata/v4/mini-mart/CallViewsForPlants?Flag=P
+# Content-Type: application/json
+
+
+GET http://localhost:4004/odata/v4/mini-mart/CallViewsForCustomer?Flag=C
 Content-Type: application/json
 
 # {
