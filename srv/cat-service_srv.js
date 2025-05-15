@@ -1,10 +1,37 @@
-const { insert } = require("@sap/cds")
-const { INSERT } = require("@sap/cds/lib/ql/cds-ql")
-const { cds2edm } = require("@sap/cds/libx/odata/utils")
-const req = require("express/lib/request")
+const cds = require("@sap/cds");
+const { v4:uuid4 } = require("uuid");
+
 
 
 module.exports = async srv =>{
+
+// const bp = await cds.connect.to("API_BUSINESS_PARTNER");
+
+    // srv.on("READ", "buIndustry", async(req, res)=>{
+    //   try {
+    //     const response = await bp.run(req.query); 
+    //     for (const item of response) {
+    //       await cds.run(INSERT.into("CATALOGMINI_INDUSTRY").entries(item));
+    //     }
+    //     return response;
+    //   } catch (error) {
+    //     console.log(error);
+    //   }
+    // })
+
+    // srv.on('ImportAddress',async(req,res)=>{
+    //   try {
+        
+    //     let Retrievedata = await bp.get("/A_BuPaIndustry")
+
+    //     await cds.run(INSERT.into("CATALOGMINI_INDUSTRY").entries(Retrievedata));
+
+    //   } catch (error) {
+    //     console.log(error)
+    //   }
+    // })
+
+
     srv.before(["CREATE"],'PLANT_INFO',async (req,res)=>{
         try {
             if (req.data.PLANT_NAME=="") {
@@ -14,6 +41,7 @@ module.exports = async srv =>{
             console.log(error)
         }
     })
+
     srv.on(['CREATE'],'PLANT_INFO',async(req,res)=>{
       try {
         console.log("On Event Triggered")
@@ -21,6 +49,7 @@ module.exports = async srv =>{
         console.log(error)
       }
     })
+
     srv.after(['CREATE'],'PLANT_INFO',async(req,res)=>{
       try {
         console.log("After Event Triggered")
@@ -30,31 +59,29 @@ module.exports = async srv =>{
       }
     })
 
-
     srv.on('RunJob',async(req,res)=>{
       try {
         await cds.run(INSERT.into("CATALOGMINI_CUSTOMERS").entries(req.data.Customers))
         let log_payload={
-          "LOG_ID":"AX-12",
+          "LOG_ID":"AX-48",
           "LOG_STATUS":"Sucess",
           "LOG_TIME":(new Date().getTime())+"",
           "LOG_DATE":new Date()+""
          }
-         await cds.run(INSERT.into("CATALOGMINI_LOG").entries(log_payload))
+         await cds.run(INSERT.into("CATALOGMINI_LOG").entries(log_payload)).upsert()
         console.log("done")
 
       } catch (error) {
         console.log(error)
         let log_payload={
-          "LOG_ID":"AX-10",
+          "LOG_ID":"AX-47",
           "LOG_STATUS":"Error",
           "LOG_TIME":(new Date().getTime())+"",
           "LOG_DATE":new Date()+""
          }
-         await cds.run(INSERT.into("CATALOGMINI_LOG").entries(log_payload))
+         await cds.run(INSERT.into("CATALOGMINI_LOG").entries(log_payload)).upsert()
       }
     })
-
 
     srv.on('RunJobEmployee', async(req, res)=>{
       try{
@@ -130,7 +157,6 @@ module.exports = async srv =>{
        }
     })
 
-
     srv.on('PostVaildation',async(req,res)=>{
         try {
             if (req.data.FLAG=="C") {
@@ -160,7 +186,6 @@ module.exports = async srv =>{
             console.log(error)
         }
     })
-
 
     srv.on('PostVaildationArrays', async (req, res) => {
         try {
@@ -206,7 +231,6 @@ module.exports = async srv =>{
         }
       })
 
-
       srv.on('CallViewsForPlants',async(req,res)=>{
         try {
           if (req.data.Flag == 'P') {
@@ -223,7 +247,6 @@ module.exports = async srv =>{
         }
       })
 
-
       srv.on('CallViewsForCustomer',async(req,res)=>{
         try {
           if (req.data.Flag == 'C') {
@@ -237,4 +260,52 @@ module.exports = async srv =>{
           console.log(error)
         }
       })
+
+      srv.after('CREATE', 'users_info', async (data, req) => {
+          await srv.emit('OrderCreated', { ID: data.USER_ID, USER_NAME: data.USER_NAME,EventType:"CREATE" });
+      });
+      
+      srv.on('OrderCreated', async (msg) => {
+          const { ID, USER_NAME } = msg.data;
+          let payload = {
+            LOG_ID : uuid4(uuid4),
+            EVENT_TYPE : "CREATR",
+            RECORD_TYPE: "NEW",
+            USER_ID : ID,
+            USER_NAME : USER_NAME
+          }
+          await cds.run(INSERT.into("CATALOGMINI_USER_INFO_LOG").entries(payload))
+      });
+
+      srv.after('UPDATE', 'users_info', async (data, req) => {
+        await srv.emit('OrderUpdated', { ID: data.USER_ID, USER_NAME: data.USER_NAME,EventType:"UPDATE" });
+      });
+    
+      srv.on('OrderUpdated', async (msg) => {
+          const { ID, USER_NAME } = msg.data;
+          let payload = {
+            LOG_ID : uuid4(uuid4),
+            EVENT_TYPE : "UPDATE",
+            RECORD_TYPE: "OLD",
+            USER_ID : ID,
+            USER_NAME : USER_NAME
+          }
+          await cds.run(INSERT.into("CATALOGMINI_USER_INFO_LOG").entries(payload))
+      });
+
+      srv.after('DELETE', 'users_info', async (data, req) => {
+        await srv.emit('OrderDeleted', { ID: data.USER_ID, USER_NAME: data.USER_NAME,EventType:"DELETE" });
+      });
+
+      srv.on('OrderDeleted', async (msg) => {
+          const { ID, USER_NAME ,EventType} = msg.data;
+          let payload = {
+            LOG_ID : uuid4(uuid4),
+            EVENT_TYPE : EventType,
+            RECORD_TYPE: "OLD",
+            USER_ID : ID,
+            USER_NAME : USER_NAME
+          }
+          await cds.run(INSERT.into("CATALOGMINI_USER_INFO_LOG").entries(payload))
+      });
 }

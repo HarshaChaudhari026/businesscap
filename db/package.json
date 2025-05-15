@@ -1,14 +1,12 @@
 {
-  "name": "db",
-  "version": "1.0.0",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "author": "",
-  "license": "ISC",
-  "description": "",
+  "name": "deploy",
   "dependencies": {
-    "@sap/hdi-deploy": "^5.4.2"
+    "@sap/hdi-deploy": "^4.8.0"
+  },
+  "engines": {
+     "node": "^12.18.0 || ^14.0.0 || ^16.0.0 || ^18.0.0"
+  },
+  "scripts": {
+    "start": "node node_modules/@sap/hdi-deploy/deploy.js  --auto-undeploy"
   }
 }

@@ -70,8 +70,8 @@
 # Content-Type: application/json
 
 
-GET http://localhost:4004/odata/v4/mini-mart/CallViewsForCustomer?Flag=C
-Content-Type: application/json
+# GET http://localhost:4004/odata/v4/mini-mart/CallViewsForCustomer?Flag=C
+# Content-Type: application/json
 
 # {
     
@@ -84,49 +84,49 @@ Content-Type: application/json
 #       "EMPLOYEE_PLANT_LOCATION": "Pune"
 # }
 
-# POST   http://localhost:4004/odata/v4/mini-mart/RunJob
-# Content-Type: application/json
+POST   http://localhost:4004/odata/v4/mini-mart/RunJob
+Content-Type: application/json
 
-# {
-#   "Customers":[
-# {
-#       "CUSTOMER_ID": "A21",
-#       "CUSTOMER_CONTACTNO": "423466789",
-#       "CUSTOMER_lOCATION": "Mumbai",
-#       "CUSTOMER_NAME": "John",
-#       "CUSTOMER_EMAILID": "John@gmail.com",
-#       "CUSTOMER_PLANT_LOCATION" : "Pune"
+{
+  "Customers":[
+{
+      "CUSTOMER_ID": "A21",
+      "CUSTOMER_CONTACTNO": "423466789",
+      "CUSTOMER_lOCATION": "Mumbai",
+      "CUSTOMER_NAME": "John",
+      "CUSTOMER_EMAILID": "John@gmail.com",
+      "CUSTOMER_PLANT_LOCATION" : "Pune"
      
-# },
-# {
-#       "CUSTOMER_ID": "A89",
-#       "CUSTOMER_CONTACTNO": "423466789",
-#       "CUSTOMER_lOCATION": "Mumbai",
-#       "CUSTOMER_NAME": "John",
-#       "CUSTOMER_EMAILID": "John@gmail.com",
-#       "CUSTOMER_PLANT_LOCATION" : "Pune"
+},
+{
+      "CUSTOMER_ID": "A89",
+      "CUSTOMER_CONTACTNO": "423466789",
+      "CUSTOMER_lOCATION": "Mumbai",
+      "CUSTOMER_NAME": "John",
+      "CUSTOMER_EMAILID": "John@gmail.com",
+      "CUSTOMER_PLANT_LOCATION" : "Pune"
      
-# },
-# {
-#       "CUSTOMER_ID": "A151",
-#       "CUSTOMER_CONTACTNO": "423466789",
-#       "CUSTOMER_lOCATION": "Mumbai",
-#       "CUSTOMER_NAME": "John",
-#       "CUSTOMER_EMAILID": "John@gmail.com",
-#       "CUSTOMER_PLANT_LOCATION" : "Pune"
+},
+{
+      "CUSTOMER_ID": "A151",
+      "CUSTOMER_CONTACTNO": "423466789",
+      "CUSTOMER_lOCATION": "Mumbai",
+      "CUSTOMER_NAME": "John",
+      "CUSTOMER_EMAILID": "John@gmail.com",
+      "CUSTOMER_PLANT_LOCATION" : "Pune"
      
-# },
-# {
-#       "CUSTOMER_ID": "A229",
-#       "CUSTOMER_CONTACTNO": "423466789",
-#       "CUSTOMER_lOCATION": "Mumbai",
-#       "CUSTOMER_NAME": "John",
-#       "CUSTOMER_EMAILID": "John@gmail.com",
-#       "CUSTOMER_PLANT_LOCATION" : "Pune"
+},
+{
+      "CUSTOMER_ID": "A229",
+      "CUSTOMER_CONTACTNO": "423466789",
+      "CUSTOMER_lOCATION": "Mumbai",
+      "CUSTOMER_NAME": "John",
+      "CUSTOMER_EMAILID": "John@gmail.com",
+      "CUSTOMER_PLANT_LOCATION" : "Pune"
      
-# }
-#   ]
-# }
+}
+  ]
+}
 
 
 # # POST   http://localhost:4004/odata/v4/mini-mart/RunJobEmployee
@@ -179,15 +179,29 @@ Content-Type: application/json
 
 
 
-# POST   http://localhost:4004/odata/v4/mini-mart/RunJobPlant
+# POST   http://localhost:4004/odata/v4/mini-mart/users_info
 # Content-Type: application/json
 
 # {
-#     "Plants": [
-#         {
-#         "PLANT_ID": "2",
-# #       "PLANT_NAME": "Pune",
-#         "PLANT_LIMIT":"90"
-#         }
-#     ]
+    
+#     "USER_ID" : "14",
+#         "USER_NAME" : "Harsha245",
+#         "USER_EMAILID": "Harsha635@gmail.com",
+#         "USER_CONTACTNO" : "9457648374",
+#         "USER_PURCHASE" : "290"
 # }
+
+# PUT   http://localhost:4004/odata/v4/mini-mart/users_info/9
+# Content-Type: application/json
+
+# {
+    
+    
+#         "USER_NAME" : "henry",
+#         "USER_EMAILID": "henry@gmail.com",
+#         "USER_CONTACTNO" : "9475648374",
+#         "USER_PURCHASE" : "290"
+# }
+
+# DELETE    http://localhost:4004/odata/v4/mini-mart/users_info/9
+# Content-Type: application/json
