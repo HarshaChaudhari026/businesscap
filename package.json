@@ -7,9 +7,11 @@
   "private": true,
   "dependencies": {
     "@sap/cds": "^6",
+    "@sap/hana-client": "^2.24.24",
     "axios": "^1.8.4",
     "express": "^4",
     "sql": "^0.78.0",
+    "sqlite": "^5.1.1",
     "sqlite3": "^5.1.7",
     "uuid": "^11.1.0"
   },
@@ -41,8 +43,18 @@
         }
       ]
     },
-    "db": {
-      "kind": "sql"
+    "requires": {
+      "db": {
+        "kind": "sql"
+      },
+      "auth":{
+        "kind": "basic",
+        "users": {
+          "harsha":{
+            "password": "123456"
+          }
+        }
+      }
     }
   }
 }

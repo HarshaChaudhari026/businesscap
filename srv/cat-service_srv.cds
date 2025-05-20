@@ -6,7 +6,7 @@ using CUSV from '../db/cat-service';
 // using { API_BUSINESS_PARTNER as external } from './external/API_BUSINESS_PARTNER';
 
 
-
+@requires :'authenticated-user'
 service mini_mart {
 
 entity PLANT_INFO as projection on catalogmini.PLANTS;

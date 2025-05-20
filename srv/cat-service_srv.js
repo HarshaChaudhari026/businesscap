@@ -269,13 +269,15 @@ module.exports = async srv =>{
           const { ID, USER_NAME } = msg.data;
           let payload = {
             LOG_ID : uuid4(uuid4),
-            EVENT_TYPE : "CREATR",
+            EVENT_TYPE : "CREATE",
             RECORD_TYPE: "NEW",
             USER_ID : ID,
             USER_NAME : USER_NAME
           }
-          await cds.run(INSERT.into("CATALOGMINI_USER_INFO_LOG").entries(payload))
+          await cds.run(UPSERT.into("CATALOGMINI_USER_INFO_LOG").entries(payload))
       });
+
+      
 
       srv.after('UPDATE', 'users_info', async (data, req) => {
         await srv.emit('OrderUpdated', { ID: data.USER_ID, USER_NAME: data.USER_NAME,EventType:"UPDATE" });
