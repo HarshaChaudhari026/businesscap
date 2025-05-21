@@ -8,8 +8,11 @@
   "dependencies": {
     "@sap/cds": "^6",
     "@sap/hana-client": "^2.24.24",
+    "@sap/xsenv": "^4.2.0",
+    "@sap/xssec": "^3",
     "axios": "^1.8.4",
     "express": "^4",
+    "passport": "^0.7.0",
     "sql": "^0.78.0",
     "sqlite": "^5.1.1",
     "sqlite3": "^5.1.7",
@@ -46,14 +49,6 @@
     "requires": {
       "db": {
         "kind": "sql"
-      },
-      "auth":{
-        "kind": "basic",
-        "users": {
-          "harsha":{
-            "password": "123456"
-          }
-        }
       }
     }
   }

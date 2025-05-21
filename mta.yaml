@@ -24,6 +24,7 @@ modules:
           srv-url: ${default-url}
     requires:
       - name: businesscap-db
+      - name: capservsoauth
 
   - name: businesscap-db-deployer
     type: hdb
@@ -34,6 +35,14 @@ modules:
       - name: businesscap-db
 
 resources:
+  - name: capservsoauth
+    type: org.cloudfoundry.managed-service
+    parameters:
+      service: xsuaa
+      service-plan: application
+      config:
+        xsappname: cap_servs-${org}-${space}
+        tenant-mode: dedicated
   - name: businesscap-db
     type: com.sap.xs.hdi-container
     parameters:
